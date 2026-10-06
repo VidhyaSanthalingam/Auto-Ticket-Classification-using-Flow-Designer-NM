@@ -1,78 +1,138 @@
-// AUTO TICKET CLASSIFICATION USING FLOW DESIGNER
-// ServiceNow - Incident Table
+# Auto Ticket Classification using Flow Designer
 
-(function autoTicketClassification(current) {
+Automated ticket classification and routing to improve service management efficiency and reduce manual effort.
 
-    // Step 1 & 2: Get Incident Details
-    var shortDesc = (current.short_description || "").toString().toLowerCase();
-    var description = (current.description || "").toString().toLowerCase();
 
-    var ticketText = shortDesc + " " + description;
+## 📑 Table of Contents
 
-    // Step 3: Initialize Classification
-    var category = "";
-    var subcategory = "";
-    var assignmentGroup = "";
+1. Overview
+2. Objectives
+3. Scope and Prerequisites
+4. Flow Designer Overview
+5. Flow Implementation
+6. Ticket Classification
+7. Testing and Validation
+8. Best Practices
+9. Expected Benefits
+10. Conclusion
 
-    // Step 4: Network Ticket
-    if (ticketText.indexOf("network") >= 0 ||
-        ticketText.indexOf("wifi") >= 0 ||
-        ticketText.indexOf("internet") >= 0) {
+---
 
-        category = "Network";
-        subcategory = "Connectivity";
-        assignmentGroup = "Network Team";
+## 1. Overview
 
-    }
+The **Auto Ticket Classification using Flow Designer** project automates
+the classification of incident tickets in ServiceNow.
 
-    // Step 5: Password/Login Ticket
-    else if (ticketText.indexOf("password") >= 0 ||
-             ticketText.indexOf("login") >= 0 ||
-             ticketText.indexOf("account") >= 0) {
+The system analyzes the information provided in an incident and automatically
+classifies the ticket based on predefined conditions. This reduces manual
+classification and improves ticket handling efficiency.
 
-        category = "Software";
-        subcategory = "Login";
-        assignmentGroup = "Service Desk";
+---
 
-    }
+## 2. Objectives
 
-    // Step 6: Hardware Ticket
-    else if (ticketText.indexOf("laptop") >= 0 ||
-             ticketText.indexOf("keyboard") >= 0 ||
-             ticketText.indexOf("mouse") >= 0 ||
-             ticketText.indexOf("printer") >= 0) {
+- Automate incident ticket classification.
+- Reduce manual work for Service Desk agents.
+- Improve ticket routing and assignment.
+- Ensure consistent ticket categorization.
+- Improve response and resolution time.
+- Maintain better data quality in incident records.
 
-        category = "Hardware";
-        subcategory = "Computer";
-        assignmentGroup = "Hardware Team";
+---
 
-    }
+## 3. Scope and Prerequisites
 
-    // Step 7: Software Ticket
-    else if (ticketText.indexOf("software") >= 0 ||
-             ticketText.indexOf("application") >= 0 ||
-             ticketText.indexOf("app") >= 0) {
+### Scope
 
-        category = "Software";
-        subcategory = "Application";
-        assignmentGroup = "Application Support";
+This project focuses on automatically classifying Incident records using
+ServiceNow Flow Designer.
 
-    }
+The flow can classify tickets based on:
 
-    // Step 8: Default Classification
-    else {
+- Short Description
+- Description
+- Category
+- Subcategory
+- Priority
+- Impact
+- Urgency
 
-        category = "Inquiry";
-        subcategory = "General";
-        assignmentGroup = "Service Desk";
-    }
+### Prerequisites
 
-    // Step 9: Update Incident
-    current.category = category;
-    current.subcategory = subcategory;
-    current.assignment_group.setDisplayValue(assignmentGroup);
+- ServiceNow instance
+- Basic knowledge of ServiceNow
+- Access to Flow Designer
+- Incident table [incident]
+- Required roles and permissions
 
-    // Step 10: Save Updated Incident
-    current.update();
+---
 
-})(current);
+## 4. Flow Designer Overview
+
+ServiceNow **Flow Designer** is used to automate business processes
+without writing complex code.
+
+The flow consists of:
+
+**Trigger → Conditions → Classification → Assignment → Update Record**
+
+### Flow Components
+
+- Trigger: Incident is created or updated.
+- Conditions: Check incident details.
+- Classification: Identify the ticket type.
+- Assignment: Route the ticket to the appropriate group.
+- Update Record: Update category and other required fields.
+
+---
+
+## 5. Flow Implementation
+
+### Step 1: Create a New Flow
+
+Navigate to:
+
+**All → Flow Designer → New → Flow**
+
+Enter the flow name:
+
+**Auto Ticket Classification**
+
+---
+
+### Step 2: Configure Trigger
+
+Select:
+
+**Trigger: Record Created or Updated**
+
+Table:
+
+**Incident [incident]**
+
+Configure the required conditions for the flow.
+
+---
+
+### Step 3: Add Classification Conditions
+
+Use conditional logic to identify the type of ticket.
+
+Example:
+
+```text
+IF Short Description contains "password"
+    → Category = Software
+    → Subcategory = Password Reset
+
+IF Short Description contains "network"
+    → Category = Network
+    → Subcategory = Connectivity
+
+IF Short Description contains "laptop"
+    → Category = Hardware
+    → Subcategory = Laptop
+
+IF Short Description contains "email"
+    → Category = Software
+    → Subcategory = Email
