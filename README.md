@@ -136,3 +136,135 @@ IF Short Description contains "laptop"
 IF Short Description contains "email"
     → Category = Software
     → Subcategory = Email
+
+---
+
+6. Ticket Classification
+
+Classification Logic
+
+The Flow Designer automatically analyzes the incident details and classifies the ticket based on predefined conditions.
+
+The flow checks the following information:
+
+Short Description
+
+Description
+
+Category
+
+Subcategory
+
+Priority
+
+Impact
+
+Urgency
+
+
+Classification Rules
+
+Network-related issues → Network Team
+
+Password/Login issues → Service Desk
+
+Hardware-related issues → Hardware Team
+
+Software/Application issues → Application Support
+
+Other issues → Service Desk
+
+
+The appropriate category, subcategory, and assignment group are automatically updated in the incident record.
+
+
+---
+
+7. Testing and Validation
+
+Test Cases
+
+The flow is tested using different types of incident tickets.
+
+Test Case 1 – Network Issue
+
+Short Description: Internet connection is not working
+
+Expected Result:
+Category: Network
+Assignment Group: Network Team
+
+Test Case 2 – Password Issue
+
+Short Description: Unable to login with password
+
+Expected Result:
+Category: Software
+Assignment Group: Service Desk
+
+Test Case 3 – Hardware Issue
+
+Short Description: Laptop keyboard is not working
+
+Expected Result:
+Category: Hardware
+Assignment Group: Hardware Team
+
+The flow execution is verified to ensure that the tickets are classified and assigned correctly.
+
+
+---
+
+8. Best Practices
+
+The following best practices are followed:
+
+Use clear and meaningful flow names.
+
+Define proper classification conditions.
+
+Avoid unnecessary flow actions.
+
+Test the flow with different incident types.
+
+Provide a default assignment for unmatched tickets.
+
+Monitor flow execution regularly.
+
+Maintain consistent ticket categorization.
+
+Keep the flow simple and easy to maintain.
+
+
+
+---
+
+9. Expected Benefits
+
+The project provides the following benefits:
+
+Reduce manual work for Service Desk agents.
+
+Improve ticket routing and assignment.
+
+Ensure consistent ticket categorization.
+
+Improve response and resolution time.
+
+Maintain better data quality in incident records.
+
+Reduce classification errors.
+
+Improve overall incident management efficiency.
+
+
+
+---
+
+10. Conclusion
+
+Auto Ticket Classification Using Flow Designer provides an automated solution for classifying and routing incident tickets in ServiceNow.
+
+The Flow Designer analyzes ticket information and automatically assigns the appropriate category, subcategory, and assignment group.
+
+This reduces manual effort, improves ticket accuracy, and helps Service Desk teams resolve incidents more efficiently.
