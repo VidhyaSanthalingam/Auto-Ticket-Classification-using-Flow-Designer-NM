@@ -139,7 +139,7 @@ IF Short Description contains "email"
 
 ---
 
-6. Ticket Classification
+### 6. Ticket Classification
 
 Classification Logic
 
@@ -180,7 +180,7 @@ The appropriate category, subcategory, and assignment group are automatically up
 
 ---
 
-7. Testing and Validation
+### 7. Testing and Validation
 
 Test Cases
 
@@ -215,7 +215,7 @@ The flow execution is verified to ensure that the tickets are classified and ass
 
 ---
 
-8. Best Practices
+### 8. Best Practices
 
 The following best practices are followed:
 
@@ -239,7 +239,7 @@ Keep the flow simple and easy to maintain.
 
 ---
 
-9. Expected Benefits
+### 9. Expected Benefits
 
 The project provides the following benefits:
 
@@ -261,7 +261,7 @@ Improve overall incident management efficiency.
 
 ---
 
-10. Conclusion
+### 10. Conclusion
 
 Auto Ticket Classification Using Flow Designer provides an automated solution for classifying and routing incident tickets in ServiceNow.
 
